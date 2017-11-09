@@ -25,7 +25,7 @@ public class TareaDos {
      */
     public static void main(String[] args) {
        
-         Map <Integer, String> map = new Map();
+         Map <Integer, String> map = new Map();                                                              //Creación del Map
         
          map.put(1, "Este");                                                                                                              //Metodo Put()
          map.put(1, "Es");
