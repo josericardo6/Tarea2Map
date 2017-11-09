@@ -5,8 +5,6 @@
  */
 package da;
 
-import java.util.Iterator;
-
 /**
  *
  * @author Ricardo Rodriguez
@@ -15,8 +13,8 @@ import java.util.Iterator;
  */
 public class Map<T extends Comparable<T>, Q extends Comparable<Q>>{
     
-    private Nodo<T, Q> cabeza;
-    private Nodo<T, Q> ultimo;
+    private Key<T, Q> cabeza;
+    private Key<T, Q> ultimo;
     private int size;
     
     public Map (){
@@ -27,19 +25,19 @@ public class Map<T extends Comparable<T>, Q extends Comparable<Q>>{
         
     }
 
-    public Nodo<T, Q> getCabeza() {
+    public Key<T, Q> getCabeza() {
         return cabeza;
     }
 
-    public void setCabeza(Nodo<T, Q> cabeza) {
+    public void setCabeza(Key<T, Q> cabeza) {
         this.cabeza = cabeza;
     }
 
-    public Nodo<T, Q> getUltimo() {
+    public Key<T, Q> getUltimo() {
         return ultimo;
     }
 
-    public void setUltimo(Nodo<T, Q> ultimo) {
+    public void setUltimo(Key<T, Q> ultimo) {
         this.ultimo = ultimo;
     }
 
@@ -75,7 +73,7 @@ public class Map<T extends Comparable<T>, Q extends Comparable<Q>>{
      */
     public boolean put(T key, Q dato){
         
-        Nodo nuevo = new Nodo(key, dato);
+        Key nuevo = new Key(key, dato);
         
         if(isEmpty()){           
             cabeza = nuevo;
@@ -83,7 +81,7 @@ public class Map<T extends Comparable<T>, Q extends Comparable<Q>>{
             size++;
             
         }else{            
-            Nodo aux = cabeza;
+            Key aux = cabeza;
             boolean bandera = false;
             
             for (int i = 0; i < size; i++) {                
@@ -96,7 +94,7 @@ public class Map<T extends Comparable<T>, Q extends Comparable<Q>>{
             }          
             
             if(bandera){              
-                System.out.println("¡La llave introducida ya existe dentro del Map!");                
+                System.out.println("ERROR: ¡La llave introducida [ " + key + " ]  ya existe dentro del Map!");                
             }else{               
                 ultimo.setSig(nuevo);
                 nuevo.setAnt(ultimo);
@@ -113,11 +111,11 @@ public class Map<T extends Comparable<T>, Q extends Comparable<Q>>{
      * Metodo que devuelve un valor de la clave en el Map</p>
      *
      * @param key
-     * @return Nodo: Dato
+     * @return Key: Dato
      */
-    public Nodo get(T key){
+    public Key get(T key){
         
-        Nodo aux = cabeza;
+        Key aux = cabeza;
         boolean bandera = false;
         
         for (int i = 0; i < size; i++) {
@@ -130,7 +128,7 @@ public class Map<T extends Comparable<T>, Q extends Comparable<Q>>{
         }
         
         if(bandera){     
-            System.out.println("[ Get ]: "+aux.getDato());
+            System.out.println("[ Get ]: "+aux.getValue());
             return aux;      
         }else{       
             System.out.println("¡Llave no encontrada!");
@@ -173,7 +171,7 @@ public class Map<T extends Comparable<T>, Q extends Comparable<Q>>{
             System.out.println("\n[ Remove ]: ¡Lista vacia!");
             return false;           
         }else{          
-            Nodo aux = cabeza;
+            Key aux = cabeza;
             boolean bandera = false;
             int index = 0;
             
@@ -195,7 +193,7 @@ public class Map<T extends Comparable<T>, Q extends Comparable<Q>>{
                     ultimo = ultimo.getAnt();
                     size--;                 
                 }else{                 
-                    Nodo aux2 = cabeza;
+                    Key aux2 = cabeza;
                     
                     for (int i = 0; i < index-1 ; i++) {
                         aux2 = aux2.next();                      
@@ -223,7 +221,7 @@ public class Map<T extends Comparable<T>, Q extends Comparable<Q>>{
      */
     public boolean containsKey(T key){
         
-        Nodo aux = cabeza;
+        Key aux = cabeza;
       
         for (int i = 0; i < size; i++) {         
             if(aux.getKey() == key){               
@@ -243,10 +241,10 @@ public class Map<T extends Comparable<T>, Q extends Comparable<Q>>{
      */
     public boolean containsValue(Q dato){
         
-        Nodo aux = cabeza;
+        Key aux = cabeza;
         
         for (int i = 0; i < size; i++) {           
-            if(aux.getDato() == dato){                
+            if(aux.getValue() == dato){                
                 return true;               
             }          
         }       
@@ -264,7 +262,7 @@ public class Map<T extends Comparable<T>, Q extends Comparable<Q>>{
         
         Cola cola = new Cola();
         
-        Nodo aux  = cabeza;
+        Key aux  = cabeza;
         
         for (int i = 0; i < size; i++) {
             
@@ -289,7 +287,7 @@ public class Map<T extends Comparable<T>, Q extends Comparable<Q>>{
         
          Pila pila = new Pila();
         
-        Nodo aux  = cabeza;
+        Key aux  = cabeza;
         
         for (int i = 0; i < size; i++) {
             
@@ -314,11 +312,11 @@ public class Map<T extends Comparable<T>, Q extends Comparable<Q>>{
         
         String res = "\n";
         
-        Nodo aux = cabeza;
+        Key aux = cabeza;
         
         for (int i = 0; i < size; i++) {
             
-            res+= "[ " + aux.getDato() + " ] ";
+            res+= "[ " + aux.getValue() + " ] ";
             aux = aux.next();
             
         }
@@ -334,7 +332,7 @@ public class Map<T extends Comparable<T>, Q extends Comparable<Q>>{
      * @param aux
      * @return boolean: true/false
      */
-    public boolean hasNext(Nodo aux){
+    public boolean hasNext(Key aux){
         
         if(aux == null){      
             return false;      
@@ -347,11 +345,11 @@ public class Map<T extends Comparable<T>, Q extends Comparable<Q>>{
         
         String coleccion = "\n| Key | -- | Value |\n\n";
         
-        Nodo aux = cabeza;
+        Key aux = cabeza;
         
         while(hasNext(aux)){
             
-            coleccion+= "[ "+aux.getKey()+ " ] ---- " +  "( " + aux.getDato() + " )\n";
+            coleccion+= "[ "+aux.getKey()+ " ] ---- " +  "( " + aux.getValue() + " )\n";
             aux = aux.next();
             
         }

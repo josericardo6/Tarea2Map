@@ -28,6 +28,7 @@ public class TareaDos {
          Map <Integer, String> map = new Map();
         
          map.put(1, "Este");                                                                                                              //Metodo Put()
+         map.put(1, "Es");
          map.put(2, "Es");
          map.put(3, "Mi");
          map.put(4, "Map");

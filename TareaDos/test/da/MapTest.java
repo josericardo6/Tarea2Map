@@ -45,8 +45,8 @@ public class MapTest {
     public void testGetCabeza() {
         System.out.println("getCabeza");
         Map instance = new Map();
-        Nodo expResult = null;
-        Nodo result = instance.getCabeza();
+        Key expResult = null;
+        Key result = instance.getCabeza();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
@@ -71,8 +71,8 @@ public class MapTest {
     public void testGetUltimo() {
         System.out.println("getUltimo");
         Map instance = new Map();
-        Nodo expResult = null;
-        Nodo result = instance.getUltimo();
+        Key expResult = null;
+        Key result = instance.getUltimo();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
@@ -155,8 +155,8 @@ public class MapTest {
         System.out.println("get");
         int key = 1;
         Map instance = new Map();
-        Nodo expResult = null;
-        Nodo result = instance.get(key);
+        Key expResult = null;
+        Key result = instance.get(key);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");

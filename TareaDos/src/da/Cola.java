@@ -13,8 +13,8 @@ package da;
  */
 public class Cola <T extends Comparable<T>, Q extends Comparable<Q>> {
     
-    private Nodo  <T, Q> cabeza;
-    private Nodo <T , Q> ultimo;
+    private Key  <T, Q> cabeza;
+    private Key <T , Q> ultimo;
     private int size;
     
     public Cola(){
@@ -24,11 +24,11 @@ public class Cola <T extends Comparable<T>, Q extends Comparable<Q>> {
         
     }
 
-    public Nodo<T, Q> getCabeza() {
+    public Key<T, Q> getCabeza() {
         return cabeza;
     }
 
-    public void setCabeza(Nodo<T, Q> cabeza) {
+    public void setCabeza(Key<T, Q> cabeza) {
         this.cabeza = cabeza;
     }
 
@@ -51,11 +51,11 @@ public class Cola <T extends Comparable<T>, Q extends Comparable<Q>> {
         
         String res = "";
         
-        Nodo aux = cabeza;
+        Key aux = cabeza;
         
         for(int i = 0; i < size; i++){
             
-            res +="[ "+ aux.getDato() + " ] ";
+            res +="[ "+ aux.getValue() + " ] ";
             
             aux = aux.next();
         }
@@ -64,7 +64,7 @@ public class Cola <T extends Comparable<T>, Q extends Comparable<Q>> {
         
     }
     
-     public boolean queue(Nodo nuevo){
+     public boolean queue(Key nuevo){
         
         if(0 == size){ 
             
@@ -73,7 +73,7 @@ public class Cola <T extends Comparable<T>, Q extends Comparable<Q>> {
             
         }else{
             
-            Nodo aux = cabeza;
+            Key aux = cabeza;
             
             for (int i = 0; i < size; i++) {
                 

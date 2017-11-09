@@ -13,8 +13,8 @@ package da;
  */
 public class Pila <T extends Comparable<T>, Q extends Comparable<Q>> {
     
-    private Nodo <T, Q> cabeza;
-    private Nodo <T , Q> ultimo;
+    private Key <T, Q> cabeza;
+    private Key <T , Q> ultimo;
     private int size;
     
     
@@ -25,11 +25,11 @@ public class Pila <T extends Comparable<T>, Q extends Comparable<Q>> {
         
     }
     
-    public Nodo<T, Q> getCabeza() {
+    public Key<T, Q> getCabeza() {
         return cabeza;
     }
 
-    public void setCabeza(Nodo<T, Q> cabeza) {
+    public void setCabeza(Key<T, Q> cabeza) {
         this.cabeza = cabeza;
     }
 
@@ -52,11 +52,11 @@ public class Pila <T extends Comparable<T>, Q extends Comparable<Q>> {
         
         String res = "";
         
-        Nodo aux = cabeza;
+        Key aux = cabeza;
         
         for(int i = 0; i < size; i++){
             
-            res +="[ "+ aux.getDato() + " ] ";
+            res +="[ "+ aux.getValue() + " ] ";
             
             aux = aux.next();
         }
@@ -65,7 +65,7 @@ public class Pila <T extends Comparable<T>, Q extends Comparable<Q>> {
         
     }
     
-    public boolean push(Nodo nuevo){
+    public boolean push(Key nuevo){
         
         if(0 == size){ 
             
@@ -74,7 +74,7 @@ public class Pila <T extends Comparable<T>, Q extends Comparable<Q>> {
             
         }else{
             
-            Nodo aux = cabeza;
+            Key aux = cabeza;
             
             for (int i = 0; i < size; i++) {
                 
@@ -107,9 +107,9 @@ public class Pila <T extends Comparable<T>, Q extends Comparable<Q>> {
 //        return true;
     }
     
-    public Nodo top(){
+    public Key top(){
         
-        Nodo aux = cabeza;
+        Key aux = cabeza;
         
         while(aux.next() != null){
             
@@ -120,9 +120,9 @@ public class Pila <T extends Comparable<T>, Q extends Comparable<Q>> {
         return ultimo;
     }
     
-    public Nodo pop(){
+    public Key pop(){
         
-        Nodo aux = cabeza;
+        Key aux = cabeza;
         
         while(aux.next() != null){
             
@@ -130,10 +130,10 @@ public class Pila <T extends Comparable<T>, Q extends Comparable<Q>> {
            
         }
         
-        Nodo aux2 = aux;
+        Key aux2 = aux;
         aux = null;
         
-        System.out.println("Nodo a utilizar: ["+aux2.getDato() + "]\n");
+        System.out.println("Nodo a utilizar: ["+aux2.getValue() + "]\n");
         
         size--;
         return aux2;
@@ -143,7 +143,7 @@ public class Pila <T extends Comparable<T>, Q extends Comparable<Q>> {
         
         int cont = 0;
         
-        Nodo aux = pop();
+        Key aux = pop();
         
         while(cont < size){
             
